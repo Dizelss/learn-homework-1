@@ -41,26 +41,10 @@ def greet_user(update, context):
 
 def planets(update, context):
     planet_name = update.message.text.split(" ")
-    planet_name = planet_name[-1]
-    current_datetime = datetime.now()
-    if planet_name == "Mercury":
-        planet = ephem.Mercury(current_datetime)
-    if planet_name == "Venus":
-        planet = ephem.Venus(current_datetime)
-    if planet_name == "Earth":
-        planet = ephem.Earth(current_datetime)
-    if planet_name == "Mars":
-        planet = ephem.Mars(current_datetime)
-    if planet_name == "Jupiter":
-        planet = ephem.Jupiter(current_datetime)
-    if planet_name == "Saturn":
-        planet = ephem.Saturn(current_datetime)
-    if planet_name == "Uranus":
-        planet = ephem.Uranus(current_datetime)
-    if planet_name == "Neptune":
-        planet = ephem.Neptune(current_datetime)
+    result_planet = planet_name.pop(-1)
+    planet = getattr(ephem, result_planet)
+    planet = planet(datetime.now())
     constellation = ephem.constellation(planet)
-    print(constellation)
     update.message.reply_text(constellation)
 
 def talk_to_me(update, context):
