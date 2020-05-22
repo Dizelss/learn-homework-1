@@ -41,8 +41,7 @@ def greet_user(update, context):
 
 def planets(update, context):
     planet_info = update.message.text.split(" ")
-    result_planet = planet_info[-1]
-    result_planet = result_planet.capitalize()
+    result_planet = planet_info[-1].capitalize()
     print(result_planet)
     planet = getattr(ephem, result_planet)
     planet = planet(datetime.now())
