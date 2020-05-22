@@ -15,32 +15,27 @@
     
 """
 
-def ask_user():
-
-    base_ask_answer = {
+base_ask_answer = {
         "Что делаешь?": "Программирую",
         "Как себя чувствуешь?": "Отлично",
         "Как дела?": "Отлично",
         "Хочешь поиграть?": "Давай!"
     }
 
-    def ask_user_dict():
-        while True:
-            question = input("Введите Ваш вопрос: ")
-            if question == "Хорошо":
-                print(f"Прогарамма завершила свою работу после ввода Вами слова {question}")
-                break
-            else:
-                get_answer(question)
-
-    def get_answer(question):
-        if question in base_ask_answer:
-            print(f"Ответ подобран из базы данных: {base_ask_answer[question]}")
+def ask_user_dict():
+    while True:
+        question = input("Введите Ваш вопрос: ")
+        if question == "Хорошо":
+            print(f"Программа завершила свою работу после ввода Вами слова {question}")
+            break
         else:
-            print(f"К сожалению, мне пока не известен ответ на Ваш вопрос {question}")
+            print_answer(question)
 
-    ask_user_dict()
-
+def  print_answer(question):
+    if question in base_ask_answer:
+        print(f"Ответ подобран из базы данных: {base_ask_answer[question]}")
+    else:
+        print(f"К сожалению, мне пока не известен ответ на Ваш вопрос {question}")
     
 if __name__ == "__main__":
-    ask_user()
+    ask_user_dict()

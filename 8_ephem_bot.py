@@ -40,8 +40,10 @@ def greet_user(update, context):
     update.message.reply_text(text)
 
 def planets(update, context):
-    planet_name = update.message.text.split(" ")
-    result_planet = planet_name.pop(-1)
+    planet_info = update.message.text.split(" ")
+    result_planet = planet_info[-1]
+    result_planet = result_planet.capitalize()
+    print(result_planet)
     planet = getattr(ephem, result_planet)
     planet = planet(datetime.now())
     constellation = ephem.constellation(planet)
